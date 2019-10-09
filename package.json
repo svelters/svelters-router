@@ -1,0 +1,13 @@
+{
+  "name": "svelte-router",
+  "version": "0.0.1",
+  "description": "Svelte router",
+  "main": "src/index.js",
+  "author": "svelters",
+  "license": "MIT",
+  "peerDependencies": {
+    "history": "^4.10.1",
+    "svelte": "^3.12.1"
+  },
+  "dependencies": {}
+}

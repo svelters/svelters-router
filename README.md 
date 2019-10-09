@@ -1,0 +1,15 @@
+# Svelte Router
+
+## Installation
+
+### npm
+
+```
+npm install --save svelte-router
+```
+
+### Yarn
+
+```
+yarn add svelte-router
+```
