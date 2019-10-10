@@ -1,25 +1,21 @@
 <script>
   import { getContext, onDestroy } from 'svelte'
-  import { ROUTER } from '../context.js'
   import { location } from '../store.js'
+  import { matchPath, parseParameters } from '../utils.js'
 
   export let path = null
   export let component = null
 
-  const { registerRoute, unregisterRoute } = getContext(ROUTER)
+  let routeParams = {}
 
-  const route = { path }
-
-  registerRoute(route)
-
-  onDestroy(() => {
-    unregisterRoute(route)
-  })
+  $: if (matchPath($location.pathname, path)) {
+    routeParams = parseParameters($location.pathname, path)
+  }
 </script>
 
-{#if path === $location.pathname }
+{#if matchPath($location.pathname, path) }
   {#if component !== null }
-    <svelte:component this={component} />
+    <svelte:component this={component} {routeParams} />
   {:else}
     <slot></slot>
   {/if}

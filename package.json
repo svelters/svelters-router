@@ -8,5 +8,8 @@
   "peerDependencies": {
     "history": "^4.10.1",
     "svelte": "^3.12.1"
+  },
+  "dependencies": {
+    "path-to-regexp": "^3.1.0"
   }
 }
