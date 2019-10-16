@@ -11,10 +11,10 @@ export const parseParameters = (location, path) => {
   const keys = []
   const regexp = pathToRegexp(path, keys)
   const match = regexp.exec(location)
-  const [ url, ...values ] = match
 
   return keys.reduce((memo, key, index) => {
-    memo[key.name] = values[index]
+    memo[key.name] = match[index]
+
     return memo
   }, {})
 }
