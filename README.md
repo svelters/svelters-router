@@ -14,26 +14,17 @@ npm install --save svelte-router // name to be defined
 yarn add svelte-router // name to be defined
 ```
 
-## Dependencies
-
-- [svelte](https://github.com/sveltejs/svelte) ^3.12.1
-- [history](https://github.com/ReactTraining/history): ^4.10.1
 
 ## Usage
 
 ```svelte
 <script>
-  // src/components/App.svelte
-
   import { Router, Route } from 'svelte-router'
-  import { createBrowserHistory } from 'history'
   import MyFirstComponent from './MyFirstComponent.svelte'
   import MySecondComponent from './MySecondComponent.svelte'
-
-  const history = createBrowserHistory()
 </script>
 
-<Router {history}>
+<Router>
   <Route path="/" component={MyFirstComponent} />
   <Route path="/foo" component={MySecondComponent} />
   <Route path="/bar/baz">
@@ -43,20 +34,33 @@ yarn add svelte-router // name to be defined
 </Router>
 ```
 
-### To navigate somewhere from any component
+### Links
 
 ```svelte
 <script>
-  import history from './some/path/to/history.js'
+  import { link } from 'svelte-router'
+</script>
+
+<p>I wonder how simple it is to create a link ?</p>
+
+<a href="/some/path" use:link>Just click here!</a>
+```
+
+### To navigate somewhere programmatically
+
+```svelte
+<script>
+  import { push } from 'svelte-router'
 
   function goToTheMoon() {
-    history.push('/moon')
+    // Prepare the ship
+    // ...
+
+    push('/moon')
   }
 </script>
 
-<h1>Foo bar</h1>
-
-<p>Lorem ipsum</p>
+<p>I'm a rocket man!</p>
 
 <button on:click={goToTheMoon}>Fly me to the moon!</button>
 ```

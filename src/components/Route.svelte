@@ -1,5 +1,4 @@
 <script>
-  import { getContext, onDestroy } from 'svelte'
   import { location } from '../store.js'
   import { matchPath, parseParameters } from '../utils.js'
 

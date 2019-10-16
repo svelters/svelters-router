@@ -1,8 +1,7 @@
 <script>
-  import { setContext, onMount, onDestroy } from 'svelte'
-  import { location } from '../store.js'
-
-  export let history
+  import { onMount, onDestroy } from 'svelte'
+  import history from '../history'
+  import { location } from '../store'
 
   let unlistenHistory = null
 
