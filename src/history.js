@@ -1,10 +1,21 @@
-import { createBrowserHistory } from 'history'
+import { location } from './store'
 
-const history = createBrowserHistory()
+export const push = path => {
+  window.history.pushState(null, null, path)
+  location.update(() => window.location)
+}
 
-export const push = history.push
-export const replace = history.replace
-export const goBack = history.goBack
-export const goForward = history.goForward
+export const replace = path => {
+  window.history.replaceState(null, null, path)
+  location.update(() => window.location)
+}
 
-export default history
+export const goBack = () => {
+  window.history.back()
+  location.update(() => window.location)
+}
+
+export const goForward = () => {
+  window.history.forward()
+  location.update(() => window.location)
+}
