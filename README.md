@@ -1,4 +1,4 @@
-# Svelte Router
+# Svelters Router
 
 ## Installation
 

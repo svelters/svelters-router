@@ -1,10 +1,16 @@
 {
   "name": "svelters-router",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.0",
   "description": "A lightweight router component for svelte",
+  "keywords": [
+    "svelte",
+    "router",
+    "routing"
+  ],
   "main": "src/index.js",
   "author": "svelters",
   "license": "MIT",
+  "repository": "github:svelters/svelters-router",
   "scripts": {
     "lint": "eslint_d src/ --ext .js --ext .svelte"
   },
