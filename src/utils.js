@@ -10,10 +10,11 @@ export const matchPath = (location, path) => {
 export const parseParameters = (location, path) => {
   const keys = []
   const regexp = pathToRegexp(path, keys)
-  const match = regexp.exec(location)
+  /* eslint-disable no-unused-vars */
+  const [url, ...values] = regexp.exec(location)
 
   return keys.reduce((memo, key, index) => {
-    memo[key.name] = match[index]
+    memo[key.name] = values[index]
 
     return memo
   }, {})
