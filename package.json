@@ -1,7 +1,7 @@
 {
-  "name": "svelte-router",
-  "version": "0.0.1",
-  "description": "Svelte router",
+  "name": "svelters-router",
+  "version": "0.1.0",
+  "description": "A lightweight router component for svelte",
   "main": "src/index.js",
   "author": "svelters",
   "license": "MIT",

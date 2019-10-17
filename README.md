@@ -5,13 +5,13 @@
 ### npm
 
 ```
-npm install --save svelte-router // name to be defined
+npm install --save svelters-router
 ```
 
 ### Yarn
 
 ```
-yarn add svelte-router // name to be defined
+yarn add svelters-router
 ```
 
 
@@ -19,26 +19,61 @@ yarn add svelte-router // name to be defined
 
 ```svelte
 <script>
-  import { Router, Route } from 'svelte-router'
-  import MyFirstComponent from './MyFirstComponent.svelte'
-  import MySecondComponent from './MySecondComponent.svelte'
+  import { Router, Route } from 'svelters-router'
+  import Home from './Home.svelte'
+  import Users from './Users.svelte'
+  import User from './User.svelte'
 </script>
 
 <Router>
-  <Route path="/" component={MyFirstComponent} />
-  <Route path="/foo" component={MySecondComponent} />
-  <Route path="/bar/baz">
-    <h1>Hello World</h1>
-    <p>svelte-router is awesome!</p>
+  <Route path="/" component={Home} />
+  <Route path="/users" component={Users} />
+  <Route path="/users/:id" component={User} />
+  <Route path="/how-to">
+    <h1>Hi!</h1>
+    <p>Routes can also have child content!</p>
   </Route>
 </Router>
+```
+
+### Get route parameters in component
+
+Route parameters are compiled by `svelters-router` and given to defined component through a prop named `routeParams`.
+
+#### Your Router:
+
+```svelte
+<script>
+  import { Router, Route } from 'svelters-router'
+  import Home from './Profile.svelte'
+</script>
+
+<Router>
+  <Route path="/organization/:organizationId/members/:memberId" component={Profile} />
+</Router>
+```
+
+#### Your component `Profile.svelte`:
+
+```svelte
+<script>
+  export let routeParams
+
+  const { organizationId, memberId } = routeParams
+</script>
+
+<ul>
+  <li>Organization ID: {organizationId}</li>
+  <li>Member ID: {memberId}</li>
+</ul>
+
 ```
 
 ### Links
 
 ```svelte
 <script>
-  import { link } from 'svelte-router'
+  import { link } from 'svelters-router'
 </script>
 
 <p>I wonder how simple it is to create a link ?</p>
@@ -50,7 +85,7 @@ yarn add svelte-router // name to be defined
 
 ```svelte
 <script>
-  import { push } from 'svelte-router'
+  import { push } from 'svelters-router'
 
   function goToTheMoon() {
     // Prepare the ship
