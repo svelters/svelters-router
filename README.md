@@ -36,6 +36,39 @@ yarn add svelters-router
 </Router>
 ```
 
+### Get route parameters in component
+
+Route parameters are compiled by `svelters-router` and given to defined component through a prop named `routeParams`.
+
+#### Your Router:
+
+```svelte
+<script>
+  import { Router, Route } from 'svelters-router'
+  import Home from './Profile.svelte'
+</script>
+
+<Router>
+  <Route path="/organization/:organizationId/members/:memberId" component={Profile} />
+</Router>
+```
+
+#### Your component `Profile.svelte`:
+
+```svelte
+<script>
+  export let routeParams
+
+  const { organizationId, memberId } = routeParams
+</script>
+
+<ul>
+  <li>Organization ID: {organizationId}</li>
+  <li>Member ID: {memberId}</li>
+</ul>
+
+```
+
 ### Links
 
 ```svelte
