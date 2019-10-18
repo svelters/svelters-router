@@ -17,6 +17,8 @@ yarn add svelters-router
 
 ## Usage
 
+### Declare route with Route component
+
 ```svelte
 <script>
   import { Router, Route } from 'svelters-router'
@@ -35,6 +37,34 @@ yarn add svelters-router
   </Route>
 </Router>
 ```
+
+### Declare route programmatically
+
+```svelte
+<script>
+  import { Router, Route } from 'svelters-router'
+  import Home from './Home.svelte'
+  import Users from './Users.svelte'
+  import User from './User.svelte'
+
+  let routes = [
+    {
+        path: "/users",
+        component: Users
+    },
+    {
+        path: "/users/:id",
+        component: User
+    }
+  ]
+</script>
+
+<Router {routes}>
+  <Route path="/" component={Home} />
+</Router>
+```
+
+:bulb: Note that you can combine the two ways of declaring routes.
 
 ### Get route parameters in component
 
