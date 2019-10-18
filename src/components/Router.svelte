@@ -8,6 +8,10 @@
 </script>
 
 {#each routes as route}
-  <Route path={route.path} component={route.component} />
+  <Route
+    component={route.component}
+    name={route.name}
+    path={route.path}
+  />
 {/each}
 <slot></slot>
