@@ -49,12 +49,12 @@ yarn add svelters-router
 
   let routes = [
     {
-        path: "/users",
-        component: Users
+      path: "/users",
+      component: Users
     },
     {
-        path: "/users/:id",
-        component: User
+      path: "/users/:id",
+      component: User
     }
   ]
 </script>
@@ -101,6 +101,8 @@ Route parameters are compiled by `svelters-router` and given to defined componen
 
 ### Links
 
+#### The link action
+
 ```svelte
 <script>
   import { link } from 'svelters-router'
@@ -109,6 +111,18 @@ Route parameters are compiled by `svelters-router` and given to defined componen
 <p>I wonder how simple it is to create a link ?</p>
 
 <a href="/some/path" use:link>Just click here!</a>
+```
+
+#### The Link component
+
+```svelte
+<script>
+  import { Link } from 'svelters-router'
+</script>
+
+<p>I wonder how simple it is to create a link ?</p>
+
+<Link href="/some/path">Just click here!</Link>
 ```
 
 ### To navigate somewhere programmatically
@@ -128,4 +142,48 @@ Route parameters are compiled by `svelters-router` and given to defined componen
 <p>I'm a rocket man!</p>
 
 <button on:click={goToTheMoon}>Fly me to the moon!</button>
+```
+
+## Advanced
+
+### Named routes
+
+It's sometime more convenient to rely on route name instead of its path to generate links.
+
+`svelters-router` provides all the stuff you need!
+
+#### Route declaration
+
+```svelte
+<script>
+  import { Router, Route } from 'svelters-router'
+  import Home from './Home.svelte'
+  import Users from './Users.svelte'
+  import User from './User.svelte'
+
+  let routes = [
+    {
+      name: "user.show",
+      path: "/users/:id",
+      component: User
+    }
+  ]
+</script>
+
+<Router {routes}>
+  <Route path="/" component={Home} />
+  <Route path="/users" component={Users} />
+</Router>
+```
+
+#### Link to a named route
+
+```svelte
+<script>
+  import { Link } from 'svelters-router'
+
+  let userId = 1234
+</script>
+
+<Link name="user.show" params={{id: userId}}>See the user {userId}</Link>
 ```

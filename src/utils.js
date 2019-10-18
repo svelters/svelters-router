@@ -19,3 +19,9 @@ export const parseParameters = (location, path) => {
     return memo
   }, {})
 }
+
+export const compileParameters = (path, parameters) => {
+  const toPath = pathToRegexp.compile(path)
+
+  return toPath(parameters)
+}
