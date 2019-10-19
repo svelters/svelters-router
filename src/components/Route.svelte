@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
-  import { location, routes } from '../store.js'
-  import { matchPath, parseParameters } from '../utils.js'
+  import { location, routes } from '../store'
+  import { matchPath, parseParameters } from '../path'
 
   export let name = null
   export let path = null
