@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/svelters-router.svg)](https://badge.fury.io/js/svelters-router)
+
 # Svelters Router
 
 ## Installation
