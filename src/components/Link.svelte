@@ -2,7 +2,7 @@
   import { derived } from 'svelte/store'
   import link from '../link'
   import { routes } from '../store'
-  import { compileParameters } from '../utils'
+  import { compileParameters } from '../path'
 
   export let name = null
   export let params = {}
