@@ -1,29 +1,18 @@
 <script>
-  import { onMount, onDestroy } from 'svelte'
-  import { location, routes } from '../store'
+  import { onDestroy } from 'svelte'
+  import { location, registerRoute, unregisterRoute } from '../store'
   import { matchPath, parseParameters } from '../path'
 
+  export let path
   export let name = null
-  export let path = null
   export let component = null
 
   let routeParams = {}
 
-  onMount(() => {
-    routes.update(routes => {
-      routes.push({ name, path })
-
-      return routes
-    })
-  })
+  registerRoute({ name, path, component })
 
   onDestroy(() => {
-    routes.update(routes => {
-      const index = routes.findIndex(route => route.path === path)
-      routes.splice(index, 1)
-
-      return routes
-    })
+    unregisterRoute({ name, path, component })
   })
 
   $: if (matchPath($location.pathname, path)) {
