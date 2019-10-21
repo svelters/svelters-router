@@ -7,6 +7,16 @@ export const matchPath = (location, path) => {
   return match !== null
 }
 
+export const matchAny = (location, routes) => {
+  for (const route of routes) {
+    if (route.path !== null && matchPath(location, route.path)) {
+      return true
+    }
+  }
+
+  return false
+}
+
 export const parseParameters = (location, path) => {
   const keys = []
   const regexp = pathToRegexp(path, keys)

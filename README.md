@@ -16,7 +16,6 @@ npm install --save svelters-router
 yarn add svelters-router
 ```
 
-
 ## Usage
 
 ### Declare route with Route component
@@ -147,6 +146,23 @@ Route parameters are compiled by `svelters-router` and given to defined componen
 ```
 
 ## Advanced
+
+### Default route
+
+You can display a default component when no any route matches the current location:
+
+```svelte
+<script>
+  import { Router, Route, DefaultRoute } from 'svelters-router'
+  import Internet from './Internet.svelte'
+  import NotFound from './NotFound.svelte'
+</script>
+
+<Router>
+  <Route path="/world/wide/web" component={Internet} />
+  <DefaultRoute component={NotFound} />
+</Router>
+```
 
 ### Named routes
 
